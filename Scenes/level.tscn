@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bovkgajne21my"]
+
+[ext_resource type="Texture2D" uid="uid://ckf52r73aslr1" path="res://Assets/Textures/player/Fall (32x32).png" id="1_kcjjk"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Fall(32x32)" type="Sprite2D" parent="."]
+position = Vector2(205, 191)
+texture = ExtResource("1_kcjjk")
