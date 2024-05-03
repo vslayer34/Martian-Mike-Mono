@@ -1,6 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://bg1rn88ygwywj"]
+[gd_scene load_steps=30 format=3 uid="uid://bg1rn88ygwywj"]
 
+[ext_resource type="Texture2D" uid="uid://ckf52r73aslr1" path="res://Assets/Textures/player/Fall (32x32).png" id="1_8dxun"]
 [ext_resource type="Texture2D" uid="uid://bghkej64ipa21" path="res://Assets/Textures/player/Idle (32x32).png" id="1_r3uss"]
+[ext_resource type="Texture2D" uid="uid://c12w7w3lilhci" path="res://Assets/Textures/player/Jump (32x32).png" id="2_4syuk"]
 [ext_resource type="Texture2D" uid="uid://b24eni6ay7r2u" path="res://Assets/Textures/player/Run (32x32).png" id="2_uuydl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cwldr"]
@@ -99,6 +101,14 @@ region = Rect2(352, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("1_8dxun")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cwldr")
 }, {
 "duration": 1.0,
@@ -134,6 +144,14 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4syuk")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -177,6 +195,9 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xvyx"]
+size = Vector2(15, 23)
+
 [node name="Player" type="CharacterBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -186,3 +207,5 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -11.5)
+shape = SubResource("RectangleShape2D_2xvyx")
