@@ -53,5 +53,39 @@ public partial class Player : CharacterBody2D
         Velocity = _movementVector;
         
         MoveAndSlide();
+
+        UpdateAnimations(direction);
+    }
+
+
+    /// <summary>
+    /// Update the animation according to its state<br/>
+    /// moving, idling, falling or jumping
+    /// </summary>
+    /// <param name="direction">movement input direction</param>
+    private void UpdateAnimations(float direction)
+    {
+        if (IsOnFloor())
+        {
+            if (direction != 0.0f)
+            {
+                AnimatedSprite.Animation = AnimationsClips.Player.RUN;
+            }
+            else
+            {
+                AnimatedSprite.Animation = AnimationsClips.Player.IDLE;
+            }
+        }
+        else
+        {
+            if (Velocity.Y < 0)
+            {
+                AnimatedSprite.Animation = AnimationsClips.Player.JUMP;
+            }
+            else
+            {
+                AnimatedSprite.Animation = AnimationsClips.Player.FALL;
+            }
+        }
     }
 }
