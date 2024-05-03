@@ -200,6 +200,7 @@ animations = [{
 size = Vector2(15, 23)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("AnimatedSprite")]
+collision_layer = 2
 script = ExtResource("1_3qh7w")
 AnimatedSprite = NodePath("AnimatedSprite2D")
 
@@ -212,3 +213,7 @@ autoplay = "Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -11.5)
 shape = SubResource("RectangleShape2D_2xvyx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 250
+limit_smoothed = true
