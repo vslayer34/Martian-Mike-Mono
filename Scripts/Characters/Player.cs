@@ -35,7 +35,7 @@ public partial class Player : CharacterBody2D
         }
 
         // Apply jump
-        if (Input.IsActionJustPressed(InputActionConstants.JUMP))
+        if (Input.IsActionJustPressed(InputActionConstants.JUMP) && IsOnFloor())
         {
             _movementVector.Y = -1 * _jumpForce;
         }
