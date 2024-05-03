@@ -28,6 +28,7 @@ public partial class Player : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        float direction = 0.0f;
         // Apply gravity
         if (!IsOnFloor())
         {
@@ -41,8 +42,13 @@ public partial class Player : CharacterBody2D
         }
 
         // Apply left and right movement
-        float direction = Input.GetAxis(InputActionConstants.MOVE_LEFT, InputActionConstants.MOVE_RIGHT);
+        direction = Input.GetAxis(InputActionConstants.MOVE_LEFT, InputActionConstants.MOVE_RIGHT);
         _movementVector.X = direction * _speed;
+        
+        if (direction != 0)
+        {
+            AnimatedSprite.FlipH = direction < 0;
+        }
 
         Velocity = _movementVector;
         
