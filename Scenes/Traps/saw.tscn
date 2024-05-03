@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp4fgh7on7mh0"]
+
+[ext_resource type="Texture2D" uid="uid://dhj6o2nsnolbk" path="res://Assets/Textures/other/Saw.png" id="1_r1w7f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qvlcb"]
+radius = 18.1108
+
+[node name="Saw" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_r1w7f")
+hframes = 8
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qvlcb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
