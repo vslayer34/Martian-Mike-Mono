@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bovkgajne21my"]
+[gd_scene load_steps=10 format=3 uid="uid://bovkgajne21my"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Level.cs" id="1_r4v51"]
+[ext_resource type="Resource" uid="uid://cr13uaaqrelrt" path="res://Scripts/Resources/GameEvents.tres" id="2_33plr"]
 [ext_resource type="PackedScene" uid="uid://bg1rn88ygwywj" path="res://Scenes/Characters/player.tscn" id="2_r5cv0"]
 [ext_resource type="Texture2D" uid="uid://jwivkun66cq7" path="res://icon.svg" id="3_gj2qy"]
 [ext_resource type="PackedScene" uid="uid://df6luov4scqk" path="res://Scenes/Environment/jump_pad.tscn" id="4_gylnv"]
+[ext_resource type="PackedScene" uid="uid://cp4fgh7on7mh0" path="res://Scenes/Traps/saw.tscn" id="5_6axjb"]
+[ext_resource type="PackedScene" uid="uid://ckmeifhh5taa8" path="res://Scenes/Traps/spike_ball.tscn" id="7_anqr1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwnii"]
 size = Vector2(606, 26)
@@ -12,22 +15,23 @@ size = Vector2(606, 26)
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition")]
 script = ExtResource("1_r4v51")
+GameEvents = ExtResource("2_33plr")
 DeathZone = NodePath("DeathZone")
 PlayerSpawnPosition = NodePath("PlayerSpawn")
 
 [node name="Player" parent="." instance=ExtResource("2_r5cv0")]
 position = Vector2(190, 139)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(97, 225)
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, 13)
 scale = Vector2(4.73438, 0.203125)
 texture = ExtResource("3_gj2qy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2(0, 13)
 shape = SubResource("RectangleShape2D_lwnii")
 
@@ -42,5 +46,15 @@ shape = SubResource("WorldBoundaryShape2D_on56j")
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(189, 137)
 
-[node name="JumpPad" parent="." instance=ExtResource("4_gylnv")]
-position = Vector2(78, 225)
+[node name="Objects" type="Node" parent="."]
+
+[node name="JumpPad" parent="Objects" instance=ExtResource("4_gylnv")]
+position = Vector2(143, 225)
+
+[node name="Traps" type="Node" parent="."]
+
+[node name="Saw" parent="Traps" instance=ExtResource("5_6axjb")]
+position = Vector2(38, 204)
+
+[node name="SpikeBall" parent="Traps" instance=ExtResource("7_anqr1")]
+position = Vector2(-12, 208)
