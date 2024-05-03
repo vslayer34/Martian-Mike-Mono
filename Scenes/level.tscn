@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bovkgajne21my"]
+[gd_scene load_steps=7 format=3 uid="uid://bovkgajne21my"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Level.cs" id="1_r4v51"]
 [ext_resource type="PackedScene" uid="uid://bg1rn88ygwywj" path="res://Scenes/Characters/player.tscn" id="2_r5cv0"]
 [ext_resource type="Texture2D" uid="uid://jwivkun66cq7" path="res://icon.svg" id="3_gj2qy"]
+[ext_resource type="PackedScene" uid="uid://df6luov4scqk" path="res://Scenes/Environment/jump_pad.tscn" id="4_gylnv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwnii"]
 size = Vector2(606, 26)
@@ -40,3 +41,6 @@ shape = SubResource("WorldBoundaryShape2D_on56j")
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(189, 137)
+
+[node name="JumpPad" parent="." instance=ExtResource("4_gylnv")]
+position = Vector2(78, 225)

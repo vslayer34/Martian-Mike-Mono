@@ -34,4 +34,18 @@ public class AnimationsClips
         /// </summary>
         public const string RUN = "Run";
     }
+
+    
+    public class JumpPad
+    {
+        /// <summary>
+        /// Reference to the<c>Idle</c>animation clip
+        /// </summary>
+        public const string IDLE = "Idle";
+
+        /// <summary>
+        /// Reference to the<c>Catapult</c>animation clip
+        /// </summary>
+        public const string CATAPULT = "Catapult";
+    }
 }
