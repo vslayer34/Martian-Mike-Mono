@@ -65,3 +65,4 @@ shape = SubResource("CircleShape2D_qvlcb")
 libraries = {
 "": SubResource("AnimationLibrary_fai15")
 }
+autoplay = "Rotate"
