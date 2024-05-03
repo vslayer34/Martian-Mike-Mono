@@ -57,4 +57,4 @@ position = Vector2(143, 225)
 position = Vector2(38, 204)
 
 [node name="SpikeBall" parent="Traps" instance=ExtResource("7_anqr1")]
-position = Vector2(-12, 208)
+position = Vector2(361, 208)
