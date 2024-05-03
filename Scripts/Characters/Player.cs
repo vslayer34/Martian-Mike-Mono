@@ -38,7 +38,7 @@ public partial class Player : CharacterBody2D
         // Apply jump
         if (Input.IsActionJustPressed(InputActionConstants.JUMP) && IsOnFloor())
         {
-            _movementVector.Y = -1 * _jumpForce;
+            Jump(_jumpForce);
         }
 
         // Apply left and right movement
@@ -87,5 +87,14 @@ public partial class Player : CharacterBody2D
                 AnimatedSprite.Animation = AnimationsClips.Player.FALL;
             }
         }
+    }
+
+    /// <summary>
+    /// make the player jump according to the given force
+    /// </summary>
+    /// <param name="jumpForce"></param>
+    public void Jump(float jumpForce)
+    {
+        _movementVector.Y = -1 * jumpForce;
     }
 }
