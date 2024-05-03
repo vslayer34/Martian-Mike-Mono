@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp4fgh7on7mh0"]
+[gd_scene load_steps=8 format=3 uid="uid://cp4fgh7on7mh0"]
 
 [ext_resource type="Script" path="res://Scripts/Traps/Trap.cs" id="1_cd6h1"]
 [ext_resource type="Texture2D" uid="uid://dhj6o2nsnolbk" path="res://Assets/Textures/other/Saw.png" id="1_r1w7f"]
@@ -6,6 +6,45 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qvlcb"]
 radius = 18.1108
+
+[sub_resource type="Animation" id="Animation_5c3dg"]
+resource_name = "Rotate"
+length = 1.00001
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_tk467"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fai15"]
+_data = {
+"RESET": SubResource("Animation_tk467"),
+"Rotate": SubResource("Animation_5c3dg")
+}
 
 [node name="Saw" type="Node2D"]
 script = ExtResource("1_cd6h1")
@@ -23,3 +62,6 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_qvlcb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fai15")
+}
