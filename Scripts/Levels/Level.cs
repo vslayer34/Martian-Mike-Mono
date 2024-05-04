@@ -1,4 +1,5 @@
 using Godot;
+using MartianMikeMono.Scripts.Environment;
 using MartianMikeMono.Scripts.Helper;
 using MartianMikeMono.Scripts.Resources;
 using System;
@@ -14,13 +15,17 @@ public partial class Level : Node2D
     public Area2D DeathZone { get; private set; }
 
     [Export]
-    public Marker2D PlayerSpawnPosition { get; private set; }
+    public StartArea PlayerSpawnPosition { get; private set; }
+
+    [Export]
+    public Player PlayerNode { get; private set; }
 
 
 
     // GameLoop Methods----------------------------------------------------------------------------
     public override void _Ready()
     {
+        ResetPositionAndSpeed(PlayerNode);
         GameEvents.TouchedPlayer += OnTrapTocuhedPlayer;
         DeathZone.BodyEntered += OnDeathZoneBodyEntered;
     }
@@ -53,7 +58,7 @@ public partial class Level : Node2D
     private void ResetPositionAndSpeed(Player player)
     {
         player.Velocity = Vector2.Zero;
-        player.GlobalPosition = PlayerSpawnPosition.Position;
+        player.GlobalPosition = PlayerSpawnPosition.GetSpawnPosition();
     }
 
 
