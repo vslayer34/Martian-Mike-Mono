@@ -24,7 +24,14 @@ public partial class Player : CharacterBody2D
     // Hold the direction of the player movement to apply it to the velocity
     private Vector2 _movementVector;
 
+    private Controlable _controlState;
 
+
+
+    public override void _Ready()
+    {
+        _controlState = Controlable.ENABLED;
+    }
 
     public override void _PhysicsProcess(double delta)
     {
@@ -35,14 +42,18 @@ public partial class Player : CharacterBody2D
             _movementVector.Y += _gravity * (float)delta;
         }
 
-        // Apply jump
-        if (Input.IsActionJustPressed(InputActionConstants.JUMP) && IsOnFloor())
+        if (_controlState == Controlable.ENABLED)
         {
-            Jump(_jumpForce);
+            // Apply jump
+            if (Input.IsActionJustPressed(InputActionConstants.JUMP) && IsOnFloor())
+            {
+                Jump(_jumpForce);
+            }
+
+            // Apply left and right movement
+            direction = Input.GetAxis(InputActionConstants.MOVE_LEFT, InputActionConstants.MOVE_RIGHT);
         }
 
-        // Apply left and right movement
-        direction = Input.GetAxis(InputActionConstants.MOVE_LEFT, InputActionConstants.MOVE_RIGHT);
         _movementVector.X = direction * _speed;
         
         if (direction != 0)
@@ -97,4 +108,16 @@ public partial class Player : CharacterBody2D
     {
         _movementVector.Y = -1 * jumpForce;
     }
+
+    /// <summary>
+    /// Set the control state of the player to disabled when it reach the finish line
+    /// </summary>
+    public void DisabeControls() => _controlState = Controlable.DISABLED;
+}
+
+
+internal enum Controlable
+{
+    ENABLED,
+    DISABLED
 }

@@ -18,6 +18,9 @@ public partial class Level : Node2D
     public StartArea PlayerSpawnPosition { get; private set; }
 
     [Export]
+    public FinishArea EndPoint { get; private set; }
+
+    [Export]
     public Player PlayerNode { get; private set; }
 
 
@@ -28,6 +31,7 @@ public partial class Level : Node2D
         ResetPositionAndSpeed(PlayerNode);
         GameEvents.TouchedPlayer += OnTrapTocuhedPlayer;
         DeathZone.BodyEntered += OnDeathZoneBodyEntered;
+        EndPoint.BodyEntered += OnFinishAreaBodyEnterd;
     }
 
     public override void _Input(InputEvent @event)
@@ -82,5 +86,18 @@ public partial class Level : Node2D
     private void OnTrapTocuhedPlayer(Player player)
     {
         ResetPositionAndSpeed(player);
+    }
+
+    /// <summary>
+    /// Called when the player reach the finish point
+    /// </summary>
+    /// <param name="body"></param>
+    private void OnFinishAreaBodyEnterd(Node2D body)
+    {
+        if (body is Player player)
+        {
+            EndPoint.Animate();
+            player.DisabeControls();
+        }
     }
 }

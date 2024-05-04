@@ -17,11 +17,12 @@ size = Vector2(606, 26)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_on56j"]
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "PlayerNode")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "EndPoint", "PlayerNode")]
 script = ExtResource("1_r4v51")
 GameEvents = ExtResource("2_33plr")
 DeathZone = NodePath("DeathZone")
 PlayerSpawnPosition = NodePath("StartArea")
+EndPoint = NodePath("FinishArea")
 PlayerNode = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("2_r5cv0")]
@@ -69,4 +70,4 @@ position = Vector2(361, 208)
 position = Vector2(210, 225)
 
 [node name="FinishArea" parent="." instance=ExtResource("11_ypvql")]
-position = Vector2(388, 225)
+position = Vector2(300, 225)
