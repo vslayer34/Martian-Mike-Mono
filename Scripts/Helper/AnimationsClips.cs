@@ -48,4 +48,13 @@ public class AnimationsClips
         /// </summary>
         public const string CATAPULT = "Catapult";
     }
+
+
+    public class FinishArea
+    {
+        /// <summary>
+        /// Reference to the<c>Win</c>animation clip
+        /// </summary>
+        public const string WIN = "Win";
+    }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bovkgajne21my"]
+[gd_scene load_steps=14 format=3 uid="uid://bovkgajne21my"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Level.cs" id="1_r4v51"]
 [ext_resource type="Resource" uid="uid://cr13uaaqrelrt" path="res://Scripts/Resources/GameEvents.tres" id="2_33plr"]
@@ -10,18 +10,19 @@
 [ext_resource type="PackedScene" uid="uid://bhi3ycewr7h3p" path="res://Scenes/Environment/tile_map.tscn" id="8_b6tug"]
 [ext_resource type="PackedScene" uid="uid://cdswpgakmiq6o" path="res://Scenes/Environment/background.tscn" id="9_6uo4o"]
 [ext_resource type="PackedScene" uid="uid://6nset14kkipm" path="res://Scenes/Environment/start_area.tscn" id="10_54hmy"]
+[ext_resource type="PackedScene" uid="uid://dca8gmxv4qs85" path="res://Scenes/Environment/finish_area.tscn" id="11_ypvql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lwnii"]
 size = Vector2(606, 26)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_on56j"]
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "Player")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "PlayerNode")]
 script = ExtResource("1_r4v51")
 GameEvents = ExtResource("2_33plr")
 DeathZone = NodePath("DeathZone")
 PlayerSpawnPosition = NodePath("StartArea")
-Player = NodePath("Player")
+PlayerNode = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource("2_r5cv0")]
 position = Vector2(190, 139)
@@ -66,3 +67,6 @@ position = Vector2(361, 208)
 
 [node name="StartArea" parent="." instance=ExtResource("10_54hmy")]
 position = Vector2(210, 225)
+
+[node name="FinishArea" parent="." instance=ExtResource("11_ypvql")]
+position = Vector2(388, 225)
