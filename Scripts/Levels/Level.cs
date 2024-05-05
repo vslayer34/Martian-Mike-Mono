@@ -12,6 +12,9 @@ public partial class Level : Node2D
     public GameEvents GameEvents { get; private set; }
 
     [Export]
+    public PackedScene NextLevel { get; private set; }
+
+    [Export]
     public Area2D DeathZone { get; private set; }
 
     [Export]
@@ -92,12 +95,14 @@ public partial class Level : Node2D
     /// Called when the player reach the finish point
     /// </summary>
     /// <param name="body"></param>
-    private void OnFinishAreaBodyEnterd(Node2D body)
+    private async void OnFinishAreaBodyEnterd(Node2D body)
     {
         if (body is Player player)
         {
             EndPoint.Animate();
             player.DisabeControls();
+            await ToSignal(GetTree().CreateTimer(1.5f), Timer.SignalName.Timeout);
+            GetTree().ChangeSceneToPacked(NextLevel);
         }
     }
 }
