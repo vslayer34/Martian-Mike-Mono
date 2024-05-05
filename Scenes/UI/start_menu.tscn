@@ -1,16 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceab30nah5r6i"]
+[gd_scene load_steps=5 format=3 uid="uid://ceab30nah5r6i"]
 
 [ext_resource type="PackedScene" uid="uid://cdswpgakmiq6o" path="res://Scenes/Environment/background.tscn" id="1_2sdg8"]
+[ext_resource type="Script" path="res://Scripts/UI/StartMenu.cs" id="1_dhyiu"]
 [ext_resource type="Texture2D" uid="uid://ben8p66n5la3i" path="res://Assets/Textures/bg/Purple.png" id="2_jbgty"]
 [ext_resource type="FontFile" uid="uid://b7c67xaxwhj12" path="res://Assets/Fonts/Kenney Pixel Square.ttf" id="3_q4on7"]
 
-[node name="StartMenu" type="Control"]
+[node name="StartMenu" type="Control" node_paths=PackedStringArray("StartButton", "QuitButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dhyiu")
+StartButton = NodePath("VBoxContainer/StartButton")
+QuitButton = NodePath("VBoxContainer/QuitButton")
 
 [node name="Background" parent="." instance=ExtResource("1_2sdg8")]
 bg_texture = ExtResource("2_jbgty")
