@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://wivf72eu3amq"]
+[gd_scene load_steps=3 format=3 uid="uid://wivf72eu3amq"]
 
-[ext_resource type="PackedScene" uid="uid://bg1rn88ygwywj" path="res://Scenes/Characters/player.tscn" id="1_vpcq3"]
+[ext_resource type="Script" path="res://Scripts/Levels/Level.cs" id="1_0iyrg"]
+[ext_resource type="PackedScene" uid="uid://t2gwvhrtvlkw" path="res://Scenes/Environment/level_essiantials.tscn" id="2_ielbe"]
 
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_0iyrg")
 
-[node name="Player" parent="." instance=ExtResource("1_vpcq3")]
+[node name="LevelEssiantials" parent="." instance=ExtResource("2_ielbe")]

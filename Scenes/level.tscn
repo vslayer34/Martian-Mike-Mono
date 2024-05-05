@@ -1,28 +1,23 @@
-[gd_scene load_steps=15 format=3 uid="uid://bovkgajne21my"]
+[gd_scene load_steps=13 format=3 uid="uid://bovkgajne21my"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Level.cs" id="1_r4v51"]
 [ext_resource type="Resource" uid="uid://cr13uaaqrelrt" path="res://Scripts/Resources/GameEvents.tres" id="2_33plr"]
 [ext_resource type="PackedScene" uid="uid://bg1rn88ygwywj" path="res://Scenes/Characters/player.tscn" id="2_r5cv0"]
-[ext_resource type="Texture2D" uid="uid://jwivkun66cq7" path="res://icon.svg" id="3_gj2qy"]
 [ext_resource type="PackedScene" uid="uid://wivf72eu3amq" path="res://Scenes/level_2.tscn" id="3_tucvq"]
 [ext_resource type="PackedScene" uid="uid://df6luov4scqk" path="res://Scenes/Environment/jump_pad.tscn" id="4_gylnv"]
 [ext_resource type="PackedScene" uid="uid://cp4fgh7on7mh0" path="res://Scenes/Traps/saw.tscn" id="5_6axjb"]
+[ext_resource type="PackedScene" uid="uid://biiyxms3gscau" path="res://Scenes/Environment/death_zone.tscn" id="5_omeaj"]
 [ext_resource type="PackedScene" uid="uid://ckmeifhh5taa8" path="res://Scenes/Traps/spike_ball.tscn" id="7_anqr1"]
 [ext_resource type="PackedScene" uid="uid://bhi3ycewr7h3p" path="res://Scenes/Environment/tile_map.tscn" id="8_b6tug"]
 [ext_resource type="PackedScene" uid="uid://cdswpgakmiq6o" path="res://Scenes/Environment/background.tscn" id="9_6uo4o"]
 [ext_resource type="PackedScene" uid="uid://6nset14kkipm" path="res://Scenes/Environment/start_area.tscn" id="10_54hmy"]
 [ext_resource type="PackedScene" uid="uid://dca8gmxv4qs85" path="res://Scenes/Environment/finish_area.tscn" id="11_ypvql"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwnii"]
-size = Vector2(606, 26)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_on56j"]
-
 [node name="Level" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "EndPoint", "PlayerNode")]
 script = ExtResource("1_r4v51")
 GameEvents = ExtResource("2_33plr")
 NextLevel = ExtResource("3_tucvq")
-DeathZone = NodePath("DeathZone")
+DeathZone = NodePath("")
 PlayerSpawnPosition = NodePath("StartArea")
 EndPoint = NodePath("FinishArea")
 PlayerNode = NodePath("Player")
@@ -30,26 +25,7 @@ PlayerNode = NodePath("Player")
 [node name="Player" parent="." instance=ExtResource("2_r5cv0")]
 position = Vector2(190, 139)
 
-[node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(97, -115)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground"]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(0, 13)
-scale = Vector2(4.73438, 0.203125)
-texture = ExtResource("3_gj2qy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
-position = Vector2(0, 13)
-shape = SubResource("RectangleShape2D_lwnii")
-
-[node name="DeathZone" type="Area2D" parent="."]
-position = Vector2(0, 352)
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
-shape = SubResource("WorldBoundaryShape2D_on56j")
+[node name="DeathZone" parent="." instance=ExtResource("5_omeaj")]
 
 [node name="Objects" type="Node" parent="."]
 

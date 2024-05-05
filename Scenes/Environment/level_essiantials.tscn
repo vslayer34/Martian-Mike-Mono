@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://t2gwvhrtvlkw"]
+
+[ext_resource type="PackedScene" uid="uid://bg1rn88ygwywj" path="res://Scenes/Characters/player.tscn" id="1_vomiw"]
+[ext_resource type="PackedScene" uid="uid://bhi3ycewr7h3p" path="res://Scenes/Environment/tile_map.tscn" id="2_1enus"]
+[ext_resource type="PackedScene" uid="uid://cdswpgakmiq6o" path="res://Scenes/Environment/background.tscn" id="3_3cdoy"]
+[ext_resource type="PackedScene" uid="uid://6nset14kkipm" path="res://Scenes/Environment/start_area.tscn" id="4_msxos"]
+[ext_resource type="PackedScene" uid="uid://dca8gmxv4qs85" path="res://Scenes/Environment/finish_area.tscn" id="5_m1o20"]
+
+[node name="LevelEssiantials" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_vomiw")]
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Traps" type="Node" parent="."]
+
+[node name="Environment" parent="." instance=ExtResource("2_1enus")]
+
+[node name="Background" parent="Environment" instance=ExtResource("3_3cdoy")]
+
+[node name="StartArea" parent="." instance=ExtResource("4_msxos")]
+
+[node name="FinishArea" parent="." instance=ExtResource("5_m1o20")]
