@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1fnppjur647r"]
+
+[ext_resource type="Script" path="res://Scripts/Levels/Level.cs" id="1_mcjbj"]
+[ext_resource type="Resource" uid="uid://cr13uaaqrelrt" path="res://Scripts/Resources/GameEvents.tres" id="2_aym22"]
+[ext_resource type="PackedScene" uid="uid://t2gwvhrtvlkw" path="res://Scenes/Environment/level_essiantials.tscn" id="2_s7ij4"]
+[ext_resource type="Texture2D" uid="uid://cckta2euc5mdo" path="res://Assets/Textures/bg/Pink.png" id="3_5f6u6"]
+
+[node name="Level3" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "EndPoint", "PlayerNode")]
+script = ExtResource("1_mcjbj")
+GameEvents = ExtResource("2_aym22")
+DeathZone = NodePath("LevelEssiantials/DeathZone")
+PlayerSpawnPosition = NodePath("LevelEssiantials/StartArea")
+EndPoint = NodePath("LevelEssiantials/FinishArea")
+PlayerNode = NodePath("LevelEssiantials/Player")
+
+[node name="LevelEssiantials" parent="." instance=ExtResource("2_s7ij4")]
+
+[node name="Environment" parent="LevelEssiantials" index="3"]
+layer_0/tile_data = PackedInt32Array(917504, 458752, 8, 983040, 458752, 9, 917505, 458752, 8, 983041, 458752, 9, 917506, 458752, 8, 983042, 458752, 9, 917507, 458752, 8, 983043, 458752, 9, 917508, 655360, 9, 983044, 458752, 9, 917509, 458752, 9, 983045, 458752, 9, 917510, 589824, 9, 983046, 458752, 9, 917511, 458752, 8, 983047, 458752, 9, 917512, 458752, 8, 983048, 458752, 9, 917513, 458752, 8, 983049, 458752, 9, 917514, 458752, 8, 983050, 458752, 9, 917515, 458752, 8, 983051, 458752, 9, 917516, 458752, 8, 983052, 458752, 9, 917517, 458752, 8, 983053, 458752, 9, 917518, 458752, 8, 983054, 458752, 9, 917519, 458752, 8, 983055, 458752, 9, 917520, 458752, 8, 983056, 458752, 9, 917521, 458752, 8, 983057, 458752, 9, 917522, 458752, 8, 983058, 458752, 9, 917523, 458752, 8, 983059, 458752, 9, 917524, 458752, 8, 983060, 458752, 9, 917525, 458752, 8, 983061, 458752, 9, 917526, 458752, 8, 983062, 458752, 9, 917527, 458752, 8, 983063, 458752, 9, 917528, 458752, 8, 983064, 458752, 9, 917529, 458752, 8, 983065, 458752, 9, 917530, 524288, 8, 983066, 524288, 9, 1048602, 524288, 10, 1048576, 458752, 10, 1048577, 458752, 10, 1048578, 458752, 10, 1048579, 458752, 10, 1048580, 458752, 10, 1048581, 458752, 10, 1048582, 458752, 10, 1048583, 458752, 10, 1048584, 458752, 10, 1048585, 458752, 10, 1048586, 458752, 10, 1048587, 458752, 10, 1048588, 458752, 10, 1048589, 458752, 10, 1048590, 458752, 10, 1048591, 458752, 10, 1048592, 458752, 10, 1048593, 458752, 10, 1048594, 458752, 10, 1048595, 458752, 10, 1048596, 458752, 10, 1048597, 458752, 10, 1048598, 458752, 10, 1048599, 458752, 10, 1048600, 458752, 10, 1048601, 458752, 10, 720900, 393216, 8, 786436, 393216, 9, 851972, 393216, 9, 720901, 458752, 8, 786437, 458752, 9, 851973, 458752, 9, 720902, 524288, 8, 786438, 524288, 9, 851974, 524288, 9, 720913, 1114112, 1, 720914, 1179648, 1, 720915, 1245184, 1, 524297, 1114112, 1, 524298, 1179648, 1, 524299, 1245184, 1, 1114111, 393216, 10, 1048575, 393216, 9, 983039, 393216, 8)
+
+[node name="Background" parent="LevelEssiantials/Environment" index="0"]
+bg_texture = ExtResource("3_5f6u6")
+
+[node name="StartArea" parent="LevelEssiantials" index="4"]
+position = Vector2(176, 225)
+
+[node name="FinishArea" parent="LevelEssiantials" index="5"]
+position = Vector2(293, 225)
+
+[editable path="LevelEssiantials"]

@@ -8,6 +8,9 @@ extends ParallaxBackground
 
 const TEXTURE_SIZE: float = 64
 
+func _ready():
+	sprite_node.texture = bg_texture
+
 func  _process(delta):
 	if (sprite_node.region_rect.position >= Vector2(TEXTURE_SIZE, TEXTURE_SIZE)):
 		sprite_node.region_rect.position = Vector2.ZERO

@@ -25,6 +25,20 @@ public partial class Level : Node2D
 
     [Export]
     public Player PlayerNode { get; private set; }
+    [ExportGroup("")]
+
+
+    // Level timer properties
+    [ExportCategory("Level Timer")]
+    private Timer _levelTimer;
+
+    [Export]
+    private float _levelTime = 5;
+    private float _timeLeft;
+
+    // Determine if the player finished the level to stop the timer
+    private bool _isLevelFinished;
+    
 
 
 
@@ -35,6 +49,16 @@ public partial class Level : Node2D
         GameEvents.TouchedPlayer += OnTrapTocuhedPlayer;
         DeathZone.BodyEntered += OnDeathZoneBodyEntered;
         EndPoint.BodyEntered += OnFinishAreaBodyEnterd;
+        
+        // Create the level timer at the start of the game and set time left to level time
+        _timeLeft = _levelTime;
+        _levelTimer = new Timer();
+        
+        _levelTimer.Name = "LevelTimer";
+        _levelTimer.WaitTime = 1.0f;
+        _levelTimer.Timeout += OnLevelTimerTimeout;
+        AddChild(_levelTimer);
+        _levelTimer.Start();
     }
 
     public override void _Input(InputEvent @event)
@@ -99,10 +123,27 @@ public partial class Level : Node2D
     {
         if (body is Player player)
         {
+            _isLevelFinished = true;
             EndPoint.Animate();
             player.DisabeControls();
             await ToSignal(GetTree().CreateTimer(1.5f), Timer.SignalName.Timeout);
             GetTree().ChangeSceneToPacked(NextLevel);
         }
+    }
+
+    private void OnLevelTimerTimeout()
+    {
+        if (_isLevelFinished)
+        {
+            return;
+        }
+        
+        if (_timeLeft <= 0)
+        {
+            ResetPositionAndSpeed(PlayerNode);
+            _timeLeft = _levelTime;
+        }
+        _timeLeft--;
+        GD.Print($"Time Left: {_timeLeft}");
     }
 }

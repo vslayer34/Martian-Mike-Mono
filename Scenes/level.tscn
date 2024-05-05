@@ -17,7 +17,7 @@
 script = ExtResource("1_r4v51")
 GameEvents = ExtResource("2_33plr")
 NextLevel = ExtResource("3_tucvq")
-DeathZone = NodePath("")
+DeathZone = NodePath("DeathZone")
 PlayerSpawnPosition = NodePath("StartArea")
 EndPoint = NodePath("FinishArea")
 PlayerNode = NodePath("Player")
