@@ -17,6 +17,6 @@ public partial class WinScreen : Control
     
     private void OnNextButtonPressed()
     {
-        GetTree().ChangeSceneToFile("res://Scenes/level.tscn");
+        GetTree().ChangeSceneToFile("res://Scenes/UI/start_menu.tscn");
     }
 }
