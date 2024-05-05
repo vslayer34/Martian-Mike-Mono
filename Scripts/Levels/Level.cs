@@ -25,11 +25,13 @@ public partial class Level : Node2D
 
     [Export]
     public Player PlayerNode { get; private set; }
+
+    [Export]
+    public ui_layer UILayerNode { get; private set; }
     [ExportGroup("")]
 
     [Export]
-    public HUD HUDNode { get; private set; }
-
+    private bool _isFinalLevel = false;
 
     // Level timer properties
     [ExportCategory("Level Timer")]
@@ -62,7 +64,7 @@ public partial class Level : Node2D
         _levelTimer.Timeout += OnLevelTimerTimeout;
         AddChild(_levelTimer);
         _levelTimer.Start();
-        HUDNode.UpdateTime(_timeLeft);
+        UILayerNode.HUDNode.UpdateTime(_timeLeft);
     }
 
     public override void _Input(InputEvent @event)
@@ -131,7 +133,15 @@ public partial class Level : Node2D
             EndPoint.Animate();
             player.DisabeControls();
             await ToSignal(GetTree().CreateTimer(1.5f), Timer.SignalName.Timeout);
-            GetTree().ChangeSceneToPacked(NextLevel);
+            
+            if (_isFinalLevel)
+            {
+                UILayerNode.ShowWinScreen(true);
+            }
+            else
+            {
+                GetTree().ChangeSceneToPacked(NextLevel);
+            }
         }
     }
 
@@ -148,6 +158,6 @@ public partial class Level : Node2D
             _timeLeft = _levelTime;
         }
         
-        HUDNode.UpdateTime(_timeLeft--);
+        UILayerNode.HUDNode.UpdateTime(_timeLeft--);
     }
 }

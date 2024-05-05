@@ -5,13 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://t2gwvhrtvlkw" path="res://Scenes/Environment/level_essiantials.tscn" id="2_s7ij4"]
 [ext_resource type="Texture2D" uid="uid://cckta2euc5mdo" path="res://Assets/Textures/bg/Pink.png" id="3_5f6u6"]
 
-[node name="Level3" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "EndPoint", "PlayerNode")]
+[node name="Level3" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "EndPoint", "PlayerNode", "UILayerNode")]
 script = ExtResource("1_mcjbj")
 GameEvents = ExtResource("2_aym22")
 DeathZone = NodePath("LevelEssiantials/DeathZone")
 PlayerSpawnPosition = NodePath("LevelEssiantials/StartArea")
 EndPoint = NodePath("LevelEssiantials/FinishArea")
 PlayerNode = NodePath("LevelEssiantials/Player")
+UILayerNode = NodePath("LevelEssiantials/UILayer")
+_isFinalLevel = true
 
 [node name="LevelEssiantials" parent="." instance=ExtResource("2_s7ij4")]
 

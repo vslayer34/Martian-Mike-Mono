@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://clqblkqiu0hv7"]
+[gd_scene load_steps=4 format=3 uid="uid://clqblkqiu0hv7"]
 
 [ext_resource type="FontFile" uid="uid://b7c67xaxwhj12" path="res://Assets/Fonts/Kenney Pixel Square.ttf" id="1_0xlfe"]
+[ext_resource type="Script" path="res://Scripts/UI/WinScreen.cs" id="1_wh71w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ohr8a"]
 font = ExtResource("1_0xlfe")
@@ -8,13 +9,15 @@ font_size = 48
 outline_size = 13
 outline_color = Color(0, 0, 0, 1)
 
-[node name="WinScreen" type="Control"]
+[node name="WinScreen" type="Control" node_paths=PackedStringArray("NextButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wh71w")
+NextButton = NodePath("NextButton")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -43,7 +46,7 @@ label_settings = SubResource("LabelSettings_ohr8a")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="NextButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

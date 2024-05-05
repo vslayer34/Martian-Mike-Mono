@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1fnppjur647r" path="res://Scenes/level_3.tscn" id="3_7cbje"]
 [ext_resource type="Texture2D" uid="uid://di0dqio16k7or" path="res://Assets/Textures/bg/Yellow.png" id="4_exs7d"]
 
-[node name="Level2" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "EndPoint", "PlayerNode")]
+[node name="Level2" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "EndPoint", "PlayerNode", "UILayerNode")]
 script = ExtResource("1_0iyrg")
 GameEvents = ExtResource("2_77lry")
 NextLevel = ExtResource("3_7cbje")
@@ -14,6 +14,7 @@ DeathZone = NodePath("LevelEssiantials/DeathZone")
 PlayerSpawnPosition = NodePath("LevelEssiantials/StartArea")
 EndPoint = NodePath("LevelEssiantials/FinishArea")
 PlayerNode = NodePath("LevelEssiantials/Player")
+UILayerNode = NodePath("LevelEssiantials/UILayer")
 
 [node name="LevelEssiantials" parent="." instance=ExtResource("2_ielbe")]
 
