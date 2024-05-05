@@ -27,6 +27,9 @@ public partial class Level : Node2D
     public Player PlayerNode { get; private set; }
     [ExportGroup("")]
 
+    [Export]
+    public HUD HUDNode { get; private set; }
+
 
     // Level timer properties
     [ExportCategory("Level Timer")]
@@ -59,6 +62,7 @@ public partial class Level : Node2D
         _levelTimer.Timeout += OnLevelTimerTimeout;
         AddChild(_levelTimer);
         _levelTimer.Start();
+        HUDNode.UpdateTime(_timeLeft);
     }
 
     public override void _Input(InputEvent @event)
@@ -138,12 +142,12 @@ public partial class Level : Node2D
             return;
         }
         
-        if (_timeLeft <= 0)
+        if (_timeLeft < 0)
         {
             ResetPositionAndSpeed(PlayerNode);
             _timeLeft = _levelTime;
         }
-        _timeLeft--;
-        GD.Print($"Time Left: {_timeLeft}");
+        
+        HUDNode.UpdateTime(_timeLeft--);
     }
 }

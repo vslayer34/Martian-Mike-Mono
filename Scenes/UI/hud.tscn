@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbwvf6r8gop1q"]
+
+[ext_resource type="Script" path="res://Scripts/UI/HUD.cs" id="1_e3bsg"]
+[ext_resource type="FontFile" uid="uid://b7c67xaxwhj12" path="res://Assets/Fonts/Kenney Pixel Square.ttf" id="1_qxihy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kme8k"]
+font = ExtResource("1_qxihy")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("TimeLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_e3bsg")
+TimeLabel = NodePath("TimeLabel")
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.0
+offset_right = 59.0
+offset_bottom = 24.0
+grow_horizontal = 2
+pivot_offset = Vector2(59, 0)
+text = "Time: 9999"
+label_settings = SubResource("LabelSettings_kme8k")

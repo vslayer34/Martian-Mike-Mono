@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bovkgajne21my"]
+[gd_scene load_steps=14 format=3 uid="uid://bovkgajne21my"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/Level.cs" id="1_r4v51"]
 [ext_resource type="Resource" uid="uid://cr13uaaqrelrt" path="res://Scripts/Resources/GameEvents.tres" id="2_33plr"]
@@ -12,8 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://cdswpgakmiq6o" path="res://Scenes/Environment/background.tscn" id="9_6uo4o"]
 [ext_resource type="PackedScene" uid="uid://6nset14kkipm" path="res://Scenes/Environment/start_area.tscn" id="10_54hmy"]
 [ext_resource type="PackedScene" uid="uid://dca8gmxv4qs85" path="res://Scenes/Environment/finish_area.tscn" id="11_ypvql"]
+[ext_resource type="PackedScene" uid="uid://d08cytu0d1sia" path="res://Scenes/UI/ui_layer.tscn" id="13_b1xce"]
 
-[node name="Level" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "EndPoint", "PlayerNode")]
+[node name="Level" type="Node2D" node_paths=PackedStringArray("DeathZone", "PlayerSpawnPosition", "EndPoint", "PlayerNode", "HUDNode")]
 script = ExtResource("1_r4v51")
 GameEvents = ExtResource("2_33plr")
 NextLevel = ExtResource("3_tucvq")
@@ -21,6 +22,7 @@ DeathZone = NodePath("DeathZone")
 PlayerSpawnPosition = NodePath("StartArea")
 EndPoint = NodePath("FinishArea")
 PlayerNode = NodePath("Player")
+HUDNode = NodePath("UILayer/HUD")
 
 [node name="Player" parent="." instance=ExtResource("2_r5cv0")]
 position = Vector2(190, 139)
@@ -49,3 +51,7 @@ position = Vector2(210, 225)
 
 [node name="FinishArea" parent="." instance=ExtResource("11_ypvql")]
 position = Vector2(300, 225)
+
+[node name="UILayer" parent="." instance=ExtResource("13_b1xce")]
+
+[editable path="UILayer"]
