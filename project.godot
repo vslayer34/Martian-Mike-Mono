@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MusicPlayer="*res://Scenes/Audio/music_player.tscn"
+AudioManagerInstance="*res://Scenes/Audio/music_player.tscn"
 
 [display]
 

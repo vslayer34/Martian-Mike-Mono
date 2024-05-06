@@ -106,6 +106,7 @@ public partial class Player : CharacterBody2D
     /// <param name="jumpForce"></param>
     public void Jump(float jumpForce)
     {
+        GetNode<AudioManager>("/root/AudioManagerInstance").PlaySFX(SFXType.JUMP);
         _movementVector.Y = -1 * jumpForce;
     }
 

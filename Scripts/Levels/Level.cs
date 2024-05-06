@@ -110,6 +110,7 @@ public partial class Level : Node2D
     {
         if (body is Player player)
         {
+            GetNode<AudioManager>("/root/AudioManagerInstance").PlaySFX(SFXType.HURT);
             ResetPositionAndSpeed(player);
         }
     }
@@ -119,6 +120,7 @@ public partial class Level : Node2D
     /// </summary>
     private void OnTrapTocuhedPlayer(Player player)
     {
+        GetNode<AudioManager>("/root/AudioManagerInstance").PlaySFX(SFXType.HURT);
         ResetPositionAndSpeed(player);
     }
 

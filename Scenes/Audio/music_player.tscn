@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://busppi7ug3qu4"]
+[gd_scene load_steps=5 format=3 uid="uid://busppi7ug3qu4"]
 
+[ext_resource type="Script" path="res://Scripts/Audio/AudioManager.cs" id="1_87i5q"]
 [ext_resource type="AudioStream" uid="uid://c4u26vncl6sf4" path="res://Assets/Audio/music.ogg" id="1_tws36"]
+[ext_resource type="AudioStream" uid="uid://di7ewgynvb74v" path="res://Assets/Audio/jump.wav" id="2_xtljx"]
+[ext_resource type="AudioStream" uid="uid://gljphwf4k7qb" path="res://Assets/Audio/hurt.wav" id="3_vqa62"]
 
 [node name="MusicPlayer" type="Node2D"]
+script = ExtResource("1_87i5q")
+JumpSFX = ExtResource("2_xtljx")
+HurtSFX = ExtResource("3_vqa62")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("1_tws36")
