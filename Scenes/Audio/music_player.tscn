@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://busppi7ug3qu4"]
+
+[ext_resource type="AudioStream" uid="uid://c4u26vncl6sf4" path="res://Assets/Audio/music.ogg" id="1_tws36"]
+
+[node name="MusicPlayer" type="Node2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_tws36")
+autoplay = true
+max_distance = 4000.0
+attenuation = 1e-05
