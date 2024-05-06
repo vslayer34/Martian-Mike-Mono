@@ -96,6 +96,7 @@ public partial class Level : Node2D
     {
         player.Velocity = Vector2.Zero;
         player.GlobalPosition = PlayerSpawnPosition.GetSpawnPosition();
+        _timeLeft = _levelTime;
     }
 
 
